@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
@@ -47,6 +48,7 @@ public class RootConfig {
         public SqlSessionFactory sqlSessionFactory() throws Exception {
                 SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
                 sqlSessionFactory.setDataSource(dataSource());
+                sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:sql/*.xml"));
                 return sqlSessionFactory.getObject();
         }
 }
