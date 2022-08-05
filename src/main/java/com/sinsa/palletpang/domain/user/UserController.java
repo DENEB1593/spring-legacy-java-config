@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-    private final UserMapper userMapper;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public String getUser(Model model) {
-        User user = userMapper.selectUser();
+        User user = userService.selectUser();
         model.addAttribute("user", user);
 
         return "user/user";

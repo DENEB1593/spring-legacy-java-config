@@ -10,8 +10,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
+@ComponentScan(basePackages = {"com.sinsa.palletpang"})
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.sinsa.palletpang.*"})
 public class ServletConfig implements WebMvcConfigurer {
 
     @Override
